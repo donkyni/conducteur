@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block link %}
+<link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+Utilisateurs
+{% endblock %}
+
+{% block active-param %} active {% endblock %}
+
+{% block collapsed-param %} {% endblock %}
+
+{% block show-param %} show {% endblock %}
+
+{% block active-users %} active {% endblock %}
+
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class=" mb-4">
+        <div class="col-lg-12 alert alert-secondary">
+            <h1 class="h5 mb-0 text-gray-800"><span style="color:#4e73df">Tableau de bord / </span>Gestion des comptes utilisateurs</h1>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary show-form mb-2" data-url="{% url 'createutilisateur' %}">
+        Ajouter un utilisateur&nbsp;
+        <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+    <a class="btn btn-outline-secondary mb-2" href="{% url 'profil' %}">
+        Gérer les profils&nbsp;
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </a>
+    <a class="btn btn-outline-secondary mb-2" href="{% url 'droit' %}">
+        Gérer les droits&nbsp;
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </a>
+    <br><br>
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="card">
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="box-header">
+                        <h5 class="box-title">Informations des utilisateurs</h5>
+                    </div>
+                    <div class="table-responsive">
+                        <table style="font-size:15px" id="table-utilisateur" class="table table-sm table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th class="text-center" style="width:5%">#</th>
+                                <th class="text-center" style="width:13%">Pseudo</th>
+                                <th class="text-center" style="width:11%">Nom</th>
+                                <th class="text-center" style="width:11%">Prénom</th>
+                                <th class="text-center" style="width:10%">Adresse</th>
+                                <th class="text-center" style="width:13%">Téléphone</th>
+                                <th class="text-center" style="width:7%">Compte</th>
+                                <th class="text-center" style="width:20%">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% include "parametre/listutilisateur.html" %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Popup ajouter un nouveau utilisateur -->
+                    <div class="modal fade" id="modal-utilisateur">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<!-- Page level plugins -->
+<script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+<!-- my js for ajax -->
+<script src="{% static 'js/utilisateurs.js' %}"></script>
+<script>
+    $(function () {
+        $("#table-utilisateur").DataTable();
+    });
+</script>
+{% endblock %}

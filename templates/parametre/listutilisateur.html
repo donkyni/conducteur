@@ -1,0 +1,42 @@
+{% for utilisateur in utilisateurs %}
+<tr>
+    <td class="text-center"><span class="badge badge-secondary">{{ utilisateur.id }}</span></td>
+    <td class="text-center"><span class="badge badge-success">{{ utilisateur.pseudo }}</span></td>
+    <td class="text-center"><span class="badge badge-secondary">{{ utilisateur.nom }}</span></td>
+    <td class="text-center"><span class="badge badge-secondary">{{ utilisateur.prenom }}</span></td>
+
+    <td class="text-center"><span class="badge badge-secondary">{{ utilisateur.adresse }}</span></td>
+    <td class="text-center"><span class="badge badge-info">{{ utilisateur.telephone }}</span></td>
+
+    {% if utilisateur.is_active == True %}
+        <td class="text-center"><span class="badge badge-success">Activé</span></td>
+    {% elif utilisateur.is_active == False %}
+        <td class="text-center"><span class="badge badge-danger">Désactivé</span></td>
+    {% endif %}
+    <td class="text-center">
+        <button class="btn btn-sm btn-warning show-form-update" data-url="{% url 'updateutilisateur' utilisateur.id %}">
+            <i class="fa fa-pencil-alt" aria-hidden="true"></i> Editer
+        </button>
+        {% if utilisateur == request.user %}
+        <button disabled class="btn btn-sm btn-danger show-form-delete" data-url="{% url 'deleteutilisateur' utilisateur.id %}">
+            <i class="fa fa-trash" aria-hidden="true"></i> Désactiver
+        </button>
+        {% else %}
+            {% if utilisateur.is_active == False %}
+                <button class="btn btn-sm btn-danger show-form-delete" data-url="{% url 'activeutilisateur' utilisateur.id %}">
+                    <i class="fa fa-trash" aria-hidden="true"></i> Activer
+                </button>
+            {% elif utilisateur.is_active is True %}
+                <button class="btn btn-sm btn-danger show-form-delete" data-url="{% url 'deleteutilisateur' utilisateur.id %}">
+                    <i class="fa fa-trash" aria-hidden="true"></i> Désactiver
+                </button>
+            {% endif %}
+        {% endif %}
+    </td>
+
+</tr>
+{% empty %}
+<tr>
+    <td colspan="10" class="text-center bg-gradient-dark">Aucun utilisateur n'est disponible pour le moment</td>
+</tr>
+{% endfor%}

@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GET AHEAD | Lockscreen</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link
+          href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+</head>
+<body class="hold-transition lockscreen" style="background-color:#dfe6e9">
+<!-- Automatic element centering -->
+<div class="lockscreen-wrapper">
+
+  <!-- START LOCK SCREEN ITEM -->
+  <div style="margin-top:150px">
+    <!-- lockscreen image -->
+    <div class="box-profile text-center">
+      <div class="lockscreen-logo">
+        <a class="badge badge-primary p-2" style="font-size:14px" href="javasscript:void(0)"><b>L.C.<span style="text-transform:uppercase"> Aného</span></b></a>
+      </div>
+      <br>
+      <img class="profile-user-img img-fluid img-circle" src="{% static 'img/undraw_profile.svg' %}"
+           style="height:100px;width:100px"
+           alt="User Image">
+    </div>
+    <!-- /.lockscreen-image -->
+    <br>
+    <!-- /.lockscreen credentials -->
+
+  </div>
+  <!-- /.lockscreen-item -->
+  <div class="help-block text-center">
+    Vous vous êtes déconnecté. <br> <a CLASS="btn btn-outline-primary btn-sm m-1" href="{% url 'login' %}">Reconnectez vous</a> pour ouvrir une nouvelle session
+  </div>
+  <div class="lockscreen-footer text-center">
+    Copyright &copy; 2021-2022 <b><a href="javasscript:void(0)" class="text-black">L.C. <span style="text-transform:uppercase">Aného</span></a></b><br>
+    Tous droits reservés
+  </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+</body>
+</html>

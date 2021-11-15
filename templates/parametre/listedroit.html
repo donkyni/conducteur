@@ -1,0 +1,19 @@
+{% for droit in droits %}
+<tr>
+    <td scope="row"><span class="badge badge-secondary">{{droit.id}}</span></td>
+    <td scope="row">{{droit.nom}}</td>
+    <td scope="row">{{droit.date}}</td>
+    <td scope="row">
+        <button class="btn btn-circle btn-info btn-sm show-form-update" data-url="{% url 'updatedroit' droit.id %}">
+            <i class="fas fa-pencil-alt"></i>
+        </button>
+        <button class="btn btn-circle btn-danger btn-sm show-form-delete" data-url="{% url 'deletedroit' droit.id %}">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="4" style="text-align:center;font-weight:bold">Aucun droit n'est disponible pour le moment</td>
+</tr>
+{% endfor %}

@@ -1,0 +1,19 @@
+{% for profil in profils %}
+<tr>
+    <td scope="row"><span class="badge badge-secondary">{{profil.id}}</span></td>
+    <td scope="row">{{profil.nom}}</td>
+    <td scope="row">{{profil.date}}</td>
+    <td scope="row">
+        <button class="btn btn-circle btn-info btn-sm show-form-update" data-url="{% url 'updateprofil' profil.id %}">
+            <i class="fas fa-pencil-alt"></i>
+        </button>
+        <button class="btn btn-circle btn-danger btn-sm show-form-delete" data-url="{% url 'deleteprofil' profil.id %}">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="4" style="text-align:center;font-weight:bold">Aucun profil n'est disponible pour le moment</td>
+</tr>
+{% endfor %}

@@ -1,0 +1,31 @@
+{% load crispy_forms_tags %}
+<form method="post" data-url="{% url 'updateconducteur' form.instance.id %}" class="update-form" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="modal-header">
+		<h5 class="modal-title">Modifier les informations de ce conducteur</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-xl-6 col-md-6 ">
+				{{ form.nom_et_prenom|as_crispy_field }}
+				{{ form.age|as_crispy_field }}
+				{{ form.niveau_etude|as_crispy_field }}
+				{{ form.adresse|as_crispy_field }}
+				{{ form.station|as_crispy_field }}
+			</div>
+			<div class="col-xl-6 col-md-6 ">
+				{{ form.photo_passeport|as_crispy_field }}
+				{{ form.numero_marie|as_crispy_field }}
+				{{ form.immatriculation|as_crispy_field }}
+				{{ form.personne_a_prevenir|as_crispy_field }}
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary">Sauvegarder</button>
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+	</div>
+</form>

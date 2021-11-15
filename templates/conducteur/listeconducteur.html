@@ -1,0 +1,30 @@
+{% for conducteur in conducteurs %}
+<tr>
+    <td scope="row"><span class="badge badge-secondary">{{conducteur.numero_marie}}</span></td>
+    <td scope="row"><span class=""><a style="" href="{% url 'detailconducteur' conducteur.id %}">{{conducteur.nom_et_prenom}}</a></span></td>
+    <td scope="row"><span class="">{{conducteur.age}}</span></td>
+    <td scope="row"><span class="">{{conducteur.niveau_etude}}</span></td>
+    <td scope="row"><span class="">{{conducteur.telephone}}</span></td>
+    <td scope="row"><span class="">{{conducteur.adresse}}</span></td>
+    <td scope="row"><span class="">{{conducteur.immatriculation}}</span></td>
+    <td scope="row"><span class="">{{conducteur.personne_a_prevenir}}</span></td>
+    <td scope="row"><span class="">{{conducteur.station}}</span></td>
+    {% if request.user.profil.nom == "Admin" %}
+    <td scope="row">
+        <a class="btn btn-circle btn-info btn-sm show-form" href="{% url 'modifierconducteur' conducteur.id %}">
+            <i class="fas fa-pencil-alt"></i>
+        </a>
+        <!--<button class="btn btn-circle btn-info btn-sm show-form" data-url="{% url 'updateconducteur' conducteur.id %}">
+            <i class="fas fa-pencil-alt"></i>
+        </button>-->
+        <button class="btn btn-circle btn-danger btn-sm show-form" data-url="{% url 'deleteconducteur' conducteur.id %}">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </td>
+    {% endif %}
+</tr>
+{% empty %}
+<tr>
+    <td colspan="10" style="text-align:center;font-weight:bold">Aucune donnée n'est disponible pour le moment</td>
+</tr>
+{% endfor %}

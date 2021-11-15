@@ -1,0 +1,44 @@
+{% load crispy_forms_tags %}
+<form method="post" data-url="{% url 'createutilisateur' %}" class="create-form" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="modal-header">
+		<h5 class="modal-title">Créer un utilisateur</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		{{ form.pseudo|as_crispy_field }}
+		<div class="form-row">
+			<div class="form-group col-md-6 mb-0">
+				{{ form.nom|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-6 mb-0">
+				{{ form.prenom|as_crispy_field }}
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6 mb-0">
+				{{ form.adresse|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-6 mb-0">
+				{{ form.telephone|as_crispy_field }}
+			</div>
+		</div>
+		{{ form.profil|as_crispy_field }}
+		{{ form.avatar|as_crispy_field }}
+		{{ form.sexe|as_crispy_field }}
+		<div class="form-row">
+			<div class="form-group col-md-6 mb-0">
+				{{ form.password1|as_crispy_field }}
+			</div>
+			<div class="form-group col-md-6 mb-0">
+				{{ form.password2|as_crispy_field }}
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+		<button type="submit" class="btn btn-primary swalDefaultSuccess">Ajouter l'utilisateur</button>
+	</div>
+</form>
