@@ -50,7 +50,7 @@ Tableau de bord
         <!-- Card Body -->
         <div class="card-body">
           <div class="table-responsive">
-            <table style=" font-family: 'Oswald', sans-serif;" class="table table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+            <table style=" font-family: 'Oswald', sans-serif;" class="table table-hover table-striped" id="sdataTable" width="100%" cellspacing="0">
               <thead>
               <tr>
                 <th scope="col" width="5%">STATION</th>
@@ -152,11 +152,11 @@ Tableau de bord
         <!-- Card Body -->
         <div class="card-body">
           <div class="table-responsive">
-            <table style=" font-family: 'Oswald', sans-serif;" class="table table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+            <table style=" font-family: 'Oswald', sans-serif;" class="table table-hover table-striped" id="cdataTable" width="100%" cellspacing="0">
               <thead>
               <tr>
-                <th scope="col" width="5%">REFERENCE</th>
-                <th scope="col" width="15%">NOM ET PRENOM</th>
+                <th scope="col" width="2%">REFERENCE</th>
+                <th scope="col" width="18%">NOM ET PRENOM</th>
                 <th scope="col" width="5%">AGE</th>
                 <th scope="col" width="15%">ETUDE</th>
                 <th scope="col" width="10%">TELEPHONE</th>
@@ -198,10 +198,12 @@ Tableau de bord
 
 <!-- Page level custom scripts -->
 <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
-<script src="{% static 'js/demo/conducteurs.js' %}"></script>
-<!--<script src="{% static 'js/stations.js' %}"></script>-->
 <script>
-    oTable = $('#dataTable').DataTable();
+    oTable = $('#sdataTable').DataTable();
+    $('#myInputTextField').keyup(function(){
+          oTable.search($(this).val()).draw() ;
+    });
+    oTable = $('#cdataTable').DataTable();
     $('#myInputTextField').keyup(function(){
           oTable.search($(this).val()).draw() ;
     })

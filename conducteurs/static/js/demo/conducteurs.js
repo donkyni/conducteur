@@ -22,7 +22,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 if(data.form_is_valid) {
-                    $('#dataTable tbody').html(data.conducteur);
+                    $('#cdataTable tbody').html(data.conducteur);
                     $('#modal-conducteur').modal('hide');
                 } else {
                     $('#modal-conducteur .modal-content').html(data.html_form)
@@ -37,11 +37,11 @@ $(".show-form").click(ShowForm);
 $('#modal-conducteur').on("submit", ".create-form", SaveForm);
 
 // Update form
-$('#dataTable').on("click", ".show-form-update", ShowForm);
+$('#cdataTable').on("click", ".show-form-update", ShowForm);
 $('#modal-conducteur').on("submit", ".update-form", SaveForm);
 
 // Delete form
-$('#dataTable').on("click", ".show-form-delete", ShowForm);
+$('#cdataTable').on("click", ".show-form-delete", ShowForm);
 $('#modal-conducteur').on("submit", ".delete-form", SaveForm);
 
 });
